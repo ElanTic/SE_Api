@@ -21,7 +21,6 @@ public class Alumno {
         this.matricula = matricula;
     }
 
-    // Comprehensive constructor
     public Alumno(int matricula, String nombres, String apellido1, String apellido2, LocalDate fechaIngreso, LocalDate fechaEgreso) {
         this.matricula = matricula;
         this.nombres = nombres;
