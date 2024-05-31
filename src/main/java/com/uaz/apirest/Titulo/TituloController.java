@@ -31,7 +31,7 @@ public class TituloController {
     public ResponseEntity<Titulo> createTitulo(@RequestBody TituloRequest tituloRequest) {
         return alumnoRepository.findByMatricula(tituloRequest.getMatricula())
                 .map(alumno -> {
-                    TipoTitulacion tipoTitulacion = tipoTitulacionRepository.findById((Integer) tituloRequest.getTipoTitulacionId().intValue())
+                    TipoTitulacion tipoTitulacion = tipoTitulacionRepository.findById(tituloRequest.getTipoTitulacionId())
                             .orElseThrow(() -> new RuntimeException("TipoTitulacion not found"));
 
                     Titulo titulo = new Titulo(alumno, tipoTitulacion, tituloRequest.getFechaTitulacion(), tituloRequest.getCedula());
