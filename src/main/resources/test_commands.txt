@@ -1,0 +1,32 @@
+curl -X POST -H "Content-Type: application/json" -d '{"matricula": 12345, "nombres": "Juan", "apellido1": "Perez", "apellido2": "Gomez", "fechaIngreso": "2020-01-10", "fechaEgreso": "2024-01-10"}' http://localhost:8080/api/alumnos:8080/api/alumnos
+
+curl -X POST -H "Content-Type: application/json" -d '{"tipo": "Promedio"}'  http://localhost:8080/api/tipos-titulacion
+
+curl -X POST -H "Content-Type: application/json" -d '{"matricula": 12345, "tipoTitulacionId": 1, "fechaTitulacion": "2024-05-10", "cedula": 67890}' http://localhost:8080/api/titulos
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "nombre": "Tech Corp",
+  "rfc": "TCR123456789",
+  "direccion": "123 Main St",
+  "telefono": "555-1234",
+  "email": "info@techcorp.com",
+  "tipoDeEmpresa": "Software Development",
+  "representanteLegal": "Carlos Rivera",
+  "website": "http://www.techcorp.com"
+}' http://localhost:8080/api/empresas
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "nombre": "Desarrollador"
+}' http://localhost:8080/api/tipos-puestos
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "tipo": {"id": 1},
+  "desc": "Desarrollador Full Stack",
+  "salario": 75000
+}' http://localhost:8080/api/puestos
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "tipo": {"nombre": "Gerente de Proyectos"},
+  "desc": "Gerente responsable de la entrega de proyectos.",
+  "salario": 90000
+}' http://localhost:8080/api/puestos
