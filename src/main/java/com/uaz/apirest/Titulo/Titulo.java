@@ -17,7 +17,7 @@ public class Titulo {
     private Long id;
     
     @Relationship(type = "HAS_TITULO", direction = Relationship.Direction.INCOMING)
-    private Alumno alumno; // Relationship to Alumno
+    private Alumno alumno; 
     
     // Relationship TipoTitulacion
     @Relationship(type = "HAS_TIPO", direction = Relationship.Direction.OUTGOING)

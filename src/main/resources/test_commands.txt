@@ -1,4 +1,4 @@
-curl -X POST -H "Content-Type: application/json" -d '{"matricula": 12345, "nombres": "Juan", "apellido1": "Perez", "apellido2": "Gomez", "fechaIngreso": "2020-01-10", "fechaEgreso": "2024-01-10"}' http://localhost:8080/api/alumnos:8080/api/alumnos
+curl -X POST -H "Content-Type: application/json" -d '{"matricula": 12345, "nombres": "Juan", "apellido1": "Perez", "apellido2": "Gomez", "fechaIngreso": "2020-01-10", "fechaEgreso": "2024-01-10"}' http://localhost:8080/api/alumnos
 
 curl -X POST -H "Content-Type: application/json" -d '{"tipo": "Promedio"}'  http://localhost:8080/api/tipos-titulacion
 
@@ -17,7 +17,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
 
 curl -X POST -H "Content-Type: application/json" -d '{
   "nombre": "Desarrollador"
-}' http://localhost:8080/api/tipos-puestos
+}' http://localhost:8080/api/tiposPuesto
 
 curl -X POST -H "Content-Type: application/json" -d '{
   "tipo": {"id": 1},

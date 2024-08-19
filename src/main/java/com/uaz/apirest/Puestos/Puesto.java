@@ -12,7 +12,7 @@ public class Puesto {
     @GeneratedValue
     private Long id;
 
-    @Relationship(type = "HAS_TYPE", direction = Relationship.Direction.OUTGOING)
+    @Relationship(type = "HAS_TIPO", direction = Relationship.Direction.OUTGOING)
     private TipoPuesto tipo;
 
     private String desc;
