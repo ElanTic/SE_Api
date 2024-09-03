@@ -10,7 +10,7 @@ public class Puesto {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private String id;
 
     @Relationship(type = "HAS_TIPO", direction = Relationship.Direction.OUTGOING)
     private TipoPuesto tipo;
@@ -18,10 +18,8 @@ public class Puesto {
     private String desc;
     private double salario;
 
-    // Default constructor
     public Puesto() {}
 
-    // Parameterized constructor
     public Puesto(TipoPuesto tipo, String desc, double salario) {
         this.tipo = tipo;
         this.desc = desc;
@@ -29,11 +27,11 @@ public class Puesto {
     }
 
     // Getters and setters
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -72,7 +70,6 @@ public class Puesto {
                 '}';
     }
 
-    // Optional: equals and hashCode methods for proper comparison
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

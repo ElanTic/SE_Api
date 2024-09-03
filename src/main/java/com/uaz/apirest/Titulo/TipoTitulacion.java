@@ -9,24 +9,22 @@ public class TipoTitulacion {
 
     @Id
     @GeneratedValue
-    private Long id; // Changed to Long with auto-generated ID
+    private String id;
     
     private String tipo;
 
-    // Default constructor
     public TipoTitulacion() {}
 
-    // Parameterized constructor
     public TipoTitulacion(String tipo) {
         this.tipo = tipo;
     }
 
     // Getters and setters
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -38,7 +36,6 @@ public class TipoTitulacion {
         this.tipo = tipo;
     }
 
-    // Optional: toString method for debugging
     @Override
     public String toString() {
         return "TipoTitulacion{" +
@@ -47,7 +44,6 @@ public class TipoTitulacion {
                 '}';
     }
 
-    // Optional: equals and hashCode methods for proper comparison
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

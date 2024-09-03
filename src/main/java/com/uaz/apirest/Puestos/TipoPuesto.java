@@ -13,10 +13,8 @@ public class TipoPuesto {
 
     private String nombre;
 
-    // Default constructor
     public TipoPuesto() {}
 
-    // Parameterized constructor
     public TipoPuesto(String nombre) {
         this.nombre = nombre;
     }
@@ -38,7 +36,6 @@ public class TipoPuesto {
         this.nombre = nombre;
     }
 
-    // Optional: toString method for debugging
     @Override
     public String toString() {
         return "TipoPuesto{" +
@@ -47,7 +44,6 @@ public class TipoPuesto {
                 '}';
     }
 
-    // Optional: equals and hashCode methods for proper comparison
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

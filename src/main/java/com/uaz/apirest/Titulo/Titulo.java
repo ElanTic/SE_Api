@@ -14,28 +14,24 @@ public class Titulo {
 
     @Id 
     @GeneratedValue
-    private Long id;
+    private String id;
     
     @Relationship(type = "HAS_TITULO", direction = Relationship.Direction.INCOMING)
     private Alumno alumno; 
     
-    // Relationship TipoTitulacion
     @Relationship(type = "HAS_TIPO", direction = Relationship.Direction.OUTGOING)
     private TipoTitulacion tipoTitulacion;
 
     private LocalDate fechaTitulacion;
     private int cedula;
 
-    // Default constructor
     private Titulo() {};
 
-    // Constructor with mandatory fields
     public Titulo(Alumno alumno, LocalDate fechaTitulacion) {
         this.alumno = alumno;
         this.fechaTitulacion = fechaTitulacion;
     }
 
-    // Full constructor
     public Titulo(Alumno alumno, TipoTitulacion tipoTitulacion, LocalDate fechaTitulacion, int cedula) {
         this.alumno = alumno;
         this.tipoTitulacion = tipoTitulacion;
@@ -44,12 +40,8 @@ public class Titulo {
     }
 
     // Getters and setters
-    public Long getId() {
+    public String getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Alumno getAlumno() {
@@ -84,7 +76,6 @@ public class Titulo {
         this.cedula = cedula;
     }
 
-    // Optional: toString method for debugging
     @Override
     public String toString() {
         return "Titulo{" +
@@ -96,7 +87,6 @@ public class Titulo {
                 '}';
     }
 
-    // Optional: equals and hashCode methods for proper comparison
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

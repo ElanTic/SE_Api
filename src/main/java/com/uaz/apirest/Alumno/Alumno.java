@@ -7,21 +7,21 @@ import org.springframework.data.neo4j.core.schema.Node;
 @Node
 public class Alumno {
     
-    @Id private int matricula;
+    @Id
+    private String matricula;
     private String nombres;
     private String apellido1;
     private String apellido2;
     private LocalDate fechaIngreso;
     private LocalDate fechaEgreso;
 
-    // Default constructor
     private Alumno() {};
 
-    public Alumno(int matricula) {
+    public Alumno(String matricula) {
         this.matricula = matricula;
     }
 
-    public Alumno(int matricula, String nombres, String apellido1, String apellido2, LocalDate fechaIngreso, LocalDate fechaEgreso) {
+    public Alumno(String matricula, String nombres, String apellido1, String apellido2, LocalDate fechaIngreso, LocalDate fechaEgreso) {
         this.matricula = matricula;
         this.nombres = nombres;
         this.apellido1 = apellido1;
@@ -30,11 +30,11 @@ public class Alumno {
         this.fechaEgreso = fechaEgreso;
     }
 
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
@@ -103,6 +103,6 @@ public class Alumno {
 
     @Override
     public int hashCode() {
-        return matricula;
+        return matricula.hashCode();
     }
 }

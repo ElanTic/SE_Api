@@ -19,7 +19,7 @@ public class AlumnoController {
     }
 
     @GetMapping("/{matricula}")
-    public ResponseEntity<Alumno> getAlumnoByMatricula(@PathVariable int matricula) {
+    public ResponseEntity<Alumno> getAlumnoByMatricula(@PathVariable String matricula) {
         return alumnoRepository.findByMatricula(matricula)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -31,7 +31,7 @@ public class AlumnoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Alumno> updateAlumno(@PathVariable int id, @RequestBody Alumno alumnoDetails) {
+    public ResponseEntity<Alumno> updateAlumno(@PathVariable String id, @RequestBody Alumno alumnoDetails) {
         return alumnoRepository.findByMatricula(id)
                 .map(alumno -> {
                     alumno.setNombres(alumnoDetails.getNombres());
@@ -46,7 +46,7 @@ public class AlumnoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAlumno(@PathVariable int id) {
+    public ResponseEntity<Void> deleteAlumno(@PathVariable String id) {
         return alumnoRepository.findByMatricula(id)
                 .map(alumno -> {
                     alumnoRepository.delete(alumno);
