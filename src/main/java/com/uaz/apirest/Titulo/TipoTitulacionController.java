@@ -18,9 +18,9 @@ public class TipoTitulacionController {
         return tipoTitulacionRepository.findAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<TipoTitulacion> getTipoTitulacionById(@PathVariable String id) {
-        return tipoTitulacionRepository.findById(id)
+    @GetMapping("/{uuid}")
+    public ResponseEntity<TipoTitulacion> getTipoTitulacionById(@PathVariable String uuid) {
+        return tipoTitulacionRepository.findByUuid(uuid)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -30,9 +30,9 @@ public class TipoTitulacionController {
         return tipoTitulacionRepository.save(tipoTitulacion);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<TipoTitulacion> updateTipoTitulacion(@PathVariable String id, @RequestBody TipoTitulacion tipoTitulacionDetails) {
-        return tipoTitulacionRepository.findById(id)
+    @PutMapping("/{uuid}")
+    public ResponseEntity<TipoTitulacion> updateTipoTitulacion(@PathVariable String uuid, @RequestBody TipoTitulacion tipoTitulacionDetails) {
+        return tipoTitulacionRepository.findByUuid(uuid)
                 .map(tipoTitulacion -> {
                     tipoTitulacion.setTipo(tipoTitulacionDetails.getTipo());
                     TipoTitulacion updatedTipoTitulacion = tipoTitulacionRepository.save(tipoTitulacion);
@@ -41,9 +41,9 @@ public class TipoTitulacionController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTipoTitulacion(@PathVariable String id) {
-        return tipoTitulacionRepository.findById(id)
+    @DeleteMapping("/{uuid}")
+    public ResponseEntity<Void> deleteTipoTitulacion(@PathVariable String uuid) {
+        return tipoTitulacionRepository.findByUuid(uuid)
                 .map(tipoTitulacion -> {
                     tipoTitulacionRepository.delete(tipoTitulacion);
                     return ResponseEntity.ok().<Void>build();

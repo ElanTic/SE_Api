@@ -10,7 +10,7 @@ public class TipoPuesto {
 
     @Id
     @GeneratedValue(generatorClass = UUIDGenerator.class)
-    private String id;
+    private String elementId;
 
     private String nombre;
 
@@ -21,12 +21,12 @@ public class TipoPuesto {
     }
 
     // Getters and setters
-    public String getId() {
-        return id;
+    public String getElementId() {
+        return elementId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setElementId(String id) {
+        this.elementId = id;
     }
 
     public String getNombre() {
@@ -40,7 +40,7 @@ public class TipoPuesto {
     @Override
     public String toString() {
         return "TipoPuesto{" +
-                "id=" + id +
+                "id=" + elementId +
                 ", nombre='" + nombre + '\'' +
                 '}';
     }
@@ -52,11 +52,11 @@ public class TipoPuesto {
 
         TipoPuesto that = (TipoPuesto) o;
 
-        return id != null ? id.equals(that.id) : that.id == null;
+        return elementId != null ? elementId.equals(that.elementId) : that.elementId == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return elementId != null ? elementId.hashCode() : 0;
     }
 }

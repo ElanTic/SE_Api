@@ -35,7 +35,7 @@ public class PuestoController {
 
     @PostMapping
     public ResponseEntity<Puesto> createPuesto(@RequestBody Puesto puesto) {
-        if (puesto.getTipo() == null || tipoPuestoRepository.findByElementId(puesto.getTipo().getId()).isEmpty()) {
+        if (puesto.getTipo() == null || tipoPuestoRepository.findByElementId(puesto.getTipo().getElementId()).isEmpty()) {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok(puestoRepository.save(puesto));

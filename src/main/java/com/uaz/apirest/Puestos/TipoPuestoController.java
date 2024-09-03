@@ -20,7 +20,7 @@ public class TipoPuestoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<TipoPuesto> getTipoPuestoById(@PathVariable String id) {
-        return tipoPuestoRepository.findById(id)
+        return tipoPuestoRepository.findByElementId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -39,7 +39,7 @@ public class TipoPuestoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<TipoPuesto> updateTipoPuesto(@PathVariable String id, @RequestBody TipoPuesto tipoPuestoDetails) {
-        return tipoPuestoRepository.findById(id)
+        return tipoPuestoRepository.findByElementId(id)
                 .map(tipoPuesto -> {
                     tipoPuesto.setNombre(tipoPuestoDetails.getNombre());
                     TipoPuesto updatedTipoPuesto = tipoPuestoRepository.save(tipoPuesto);
@@ -50,7 +50,7 @@ public class TipoPuestoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTipoPuesto(@PathVariable String id) {
-        return tipoPuestoRepository.findById(id)
+        return tipoPuestoRepository.findByElementId(id)
                 .map(tipoPuesto -> {
                     tipoPuestoRepository.delete(tipoPuesto);
                     return ResponseEntity.ok().<Void>build();
