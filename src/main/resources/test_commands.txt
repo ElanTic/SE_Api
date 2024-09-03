@@ -49,7 +49,7 @@
 200
 
 >>> data = {"nombre": "Desarrollador"}
->>> r = requests.post(url + 'tiposPuesto', json=data)
+>>> r = requests.post(url + 'tipo-puesto', json=data)
 >>> r.status_code
 200
 
