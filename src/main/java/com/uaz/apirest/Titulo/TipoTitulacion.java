@@ -9,8 +9,8 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue.UUIDGenerator;
 public class TipoTitulacion {
 
     @Id
-    @GeneratedValue(generatorClass = UUIDGenerator.class)
-    private String uuid;
+    @GeneratedValue
+    private String elementId;
     
     private String tipo;
 
@@ -21,12 +21,12 @@ public class TipoTitulacion {
     }
 
     // Getters and setters
-    public String getUuid() {
-        return uuid;
+    public String getElementId() {
+        return elementId;
     }
 
-    public void setUuid(String id) {
-        this.uuid = id;
+    public void setElementId(String id) {
+        this.elementId = id;
     }
 
     public String getTipo() {
@@ -40,7 +40,7 @@ public class TipoTitulacion {
     @Override
     public String toString() {
         return "TipoTitulacion{" +
-                "id=" + uuid +
+                "id=" + elementId +
                 ", tipo='" + tipo + '\'' +
                 '}';
     }
@@ -52,11 +52,11 @@ public class TipoTitulacion {
 
         TipoTitulacion that = (TipoTitulacion) o;
 
-        return uuid != null ? uuid.equals(that.uuid) : that.uuid == null;
+        return elementId != null ? elementId.equals(that.elementId) : that.elementId == null;
     }
 
     @Override
     public int hashCode() {
-        return uuid != null ? uuid.hashCode() : 0;
+        return elementId != null ? elementId.hashCode() : 0;
     }
 }

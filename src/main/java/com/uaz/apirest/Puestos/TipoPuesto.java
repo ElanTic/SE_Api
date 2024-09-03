@@ -9,7 +9,7 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue.UUIDGenerator;
 public class TipoPuesto {
 
     @Id
-    @GeneratedValue(generatorClass = UUIDGenerator.class)
+    @GeneratedValue
     private String elementId;
 
     private String nombre;

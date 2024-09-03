@@ -10,7 +10,7 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue.UUIDGenerator;
 public class Empresa {
 
     @Id
-    @GeneratedValue(generatorClass = UUIDGenerator.class)
+    @GeneratedValue
     private String id;
 
     private String nombre;

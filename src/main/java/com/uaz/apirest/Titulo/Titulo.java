@@ -14,7 +14,7 @@ import com.uaz.apirest.Alumno.Alumno;
 public class Titulo {
 
     @Id 
-    @GeneratedValue(generatorClass = UUIDGenerator.class)
+    @GeneratedValue
     private String id;
     
     @Relationship(type = "HAS_TITULO", direction = Relationship.Direction.INCOMING)

@@ -10,7 +10,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 public class Puesto {
 
     @Id
-    @GeneratedValue(generatorClass = UUIDGenerator.class)
+    @GeneratedValue
     private String id;
 
     @Relationship(type = "HAS_TIPO", direction = Relationship.Direction.OUTGOING)
