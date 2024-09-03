@@ -2,6 +2,7 @@ package com.uaz.apirest.Puestos;
 
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.GeneratedValue.UUIDGenerator;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
@@ -9,7 +10,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 public class Puesto {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generatorClass = UUIDGenerator.class)
     private String id;
 
     @Relationship(type = "HAS_TIPO", direction = Relationship.Direction.OUTGOING)

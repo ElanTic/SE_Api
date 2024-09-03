@@ -3,12 +3,13 @@ package com.uaz.apirest.Titulo;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.GeneratedValue.UUIDGenerator;
 
 @Node
 public class TipoTitulacion {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generatorClass = UUIDGenerator.class)
     private String id;
     
     private String tipo;

@@ -3,12 +3,13 @@ package com.uaz.apirest.Puestos;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.GeneratedValue.UUIDGenerator;
 
 @Node
 public class TipoPuesto {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generatorClass = UUIDGenerator.class)
     private String id;
 
     private String nombre;

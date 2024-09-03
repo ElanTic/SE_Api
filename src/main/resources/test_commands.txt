@@ -1,5 +1,5 @@
 >>> import requests
->>> url = 'http://10.2.80.244:8080/api/'
+>>> url = 'http://localhost:8080/api/'
 
 >>> data ={
 ... "matricula": 12345,

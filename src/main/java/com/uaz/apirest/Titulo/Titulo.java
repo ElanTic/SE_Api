@@ -6,6 +6,7 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
+import org.springframework.data.neo4j.core.schema.GeneratedValue.UUIDGenerator;
 
 import com.uaz.apirest.Alumno.Alumno;
 
@@ -13,7 +14,7 @@ import com.uaz.apirest.Alumno.Alumno;
 public class Titulo {
 
     @Id 
-    @GeneratedValue
+    @GeneratedValue(generatorClass = UUIDGenerator.class)
     private String id;
     
     @Relationship(type = "HAS_TITULO", direction = Relationship.Direction.INCOMING)
