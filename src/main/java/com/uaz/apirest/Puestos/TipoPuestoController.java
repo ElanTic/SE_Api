@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/tiposPuesto")
+@RequestMapping("/api/tipos-puesto")
 public class TipoPuestoController {
 
     @Autowired
