@@ -4,5 +4,5 @@ import org.springframework.data.neo4j.repository.Neo4jRepository;
 import java.util.Optional;
 
 public interface TipoTitulacionRepository extends Neo4jRepository<TipoTitulacion, String> {
-    Optional<TipoTitulacion> findByUuid(String id);
+    Optional<TipoTitulacion> findByUuid(String uuid);
 }
