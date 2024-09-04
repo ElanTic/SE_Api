@@ -90,7 +90,6 @@ public class Alumno {
                 '}';
     }
 
-    // Optional: equals and hashCode methods for proper comparison
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

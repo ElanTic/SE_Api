@@ -1,9 +1,12 @@
 package com.uaz.apirest.Titulo;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.uaz.apirest.Alumno.Alumno;
 import com.uaz.apirest.Alumno.AlumnoRepository;
 
 import java.time.LocalDate;
@@ -29,17 +32,25 @@ public class TituloController {
 
     @PostMapping
     public ResponseEntity<Titulo> createTitulo(@RequestBody TituloRequest tituloRequest) {
-        return alumnoRepository.findByMatricula(tituloRequest.getMatricula())
-                .map(alumno -> {
-                    TipoTitulacion tipoTitulacion = tipoTitulacionRepository.findById(tituloRequest.getTipoTitulacionId())
-                            .orElseThrow(() -> new RuntimeException("TipoTitulacion not found"));
+        Optional<Alumno> alumnoOpt = alumnoRepository.findByMatricula(tituloRequest.getMatricula());
+        if (!alumnoOpt.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
 
-                    Titulo titulo = new Titulo(alumno, tipoTitulacion, tituloRequest.getFechaTitulacion(), tituloRequest.getCedula());
-                    Titulo savedTitulo = tituloRepository.save(titulo);
-                    return ResponseEntity.ok(savedTitulo);
-                })
-                .orElse(ResponseEntity.notFound().build());
-    }
+        Alumno alumno = alumnoOpt.get();
+
+        Optional<TipoTitulacion> tipoTitulacionOpt = tipoTitulacionRepository.findById(tituloRequest.getTipoTitulacionId());
+        if (!tipoTitulacionOpt.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        TipoTitulacion tipoTitulacion = tipoTitulacionOpt.get();
+
+        Titulo titulo = new Titulo(alumno, tipoTitulacion, tituloRequest.getFechaTitulacion(), tituloRequest.getCedula());
+        tituloRepository.save(titulo);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(titulo);
+}
 }
 
 class TituloRequest {

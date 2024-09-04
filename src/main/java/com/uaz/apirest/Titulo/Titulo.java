@@ -20,22 +20,19 @@ public class Titulo {
     private Alumno alumno; 
     
     // Relationship TipoTitulacion
-    @Relationship(type = "HAS_TIPO", direction = Relationship.Direction.OUTGOING)
+    @Relationship(type = "HAS_TIPO", direction = Relationship.Direction.INCOMING)
     private TipoTitulacion tipoTitulacion;
 
     private LocalDate fechaTitulacion;
     private int cedula;
 
-    // Default constructor
     private Titulo() {};
 
-    // Constructor with mandatory fields
     public Titulo(Alumno alumno, LocalDate fechaTitulacion) {
         this.alumno = alumno;
         this.fechaTitulacion = fechaTitulacion;
     }
 
-    // Full constructor
     public Titulo(Alumno alumno, TipoTitulacion tipoTitulacion, LocalDate fechaTitulacion, int cedula) {
         this.alumno = alumno;
         this.tipoTitulacion = tipoTitulacion;
@@ -84,7 +81,6 @@ public class Titulo {
         this.cedula = cedula;
     }
 
-    // Optional: toString method for debugging
     @Override
     public String toString() {
         return "Titulo{" +
@@ -96,7 +92,6 @@ public class Titulo {
                 '}';
     }
 
-    // Optional: equals and hashCode methods for proper comparison
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
