@@ -25,8 +25,8 @@ public class TipoTitulacion {
         return elementId;
     }
 
-    public void setElementId(String id) {
-        this.elementId = id;
+    public void setElementId(String elementId) {
+        this.elementId = elementId;
     }
 
     public String getTipo() {
@@ -40,7 +40,7 @@ public class TipoTitulacion {
     @Override
     public String toString() {
         return "TipoTitulacion{" +
-                "id=" + elementId +
+                "elementId=" + elementId +
                 ", tipo='" + tipo + '\'' +
                 '}';
     }

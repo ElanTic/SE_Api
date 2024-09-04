@@ -15,7 +15,7 @@ public class Titulo {
 
     @Id 
     @GeneratedValue
-    private String id;
+    private String elementId;
     
     @Relationship(type = "HAS_TITULO", direction = Relationship.Direction.INCOMING)
     private Alumno alumno; 
@@ -41,8 +41,8 @@ public class Titulo {
     }
 
     // Getters and setters
-    public String getId() {
-        return id;
+    public String getElementId() {
+        return elementId;
     }
 
     public Alumno getAlumno() {
@@ -80,7 +80,7 @@ public class Titulo {
     @Override
     public String toString() {
         return "Titulo{" +
-                "id=" + id +
+                "elementId=" + elementId +
                 ", alumno=" + alumno +
                 ", tipoTitulacion=" + tipoTitulacion +
                 ", fechaTitulacion=" + fechaTitulacion +
@@ -95,11 +95,11 @@ public class Titulo {
 
         Titulo titulo = (Titulo) o;
 
-        return id != null ? id.equals(titulo.id) : titulo.id == null;
+        return elementId != null ? elementId.equals(titulo.elementId) : titulo.elementId == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return elementId != null ? elementId.hashCode() : 0;
     }
 }

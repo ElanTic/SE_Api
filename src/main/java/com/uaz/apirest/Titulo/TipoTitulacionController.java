@@ -18,9 +18,9 @@ public class TipoTitulacionController {
         return tipoTitulacionRepository.findAll();
     }
 
-    @GetMapping("/{uuid}")
-    public ResponseEntity<TipoTitulacion> getTipoTitulacionById(@PathVariable String uuid) {
-        return tipoTitulacionRepository.findByElementId(uuid)
+    @GetMapping("/{elementId}")
+    public ResponseEntity<TipoTitulacion> getTipoTitulacionById(@PathVariable String elementId) {
+        return tipoTitulacionRepository.findByElementId(elementId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -30,9 +30,9 @@ public class TipoTitulacionController {
         return tipoTitulacionRepository.save(tipoTitulacion);
     }
 
-    @PutMapping("/{uuid}")
-    public ResponseEntity<TipoTitulacion> updateTipoTitulacion(@PathVariable String uuid, @RequestBody TipoTitulacion tipoTitulacionDetails) {
-        return tipoTitulacionRepository.findByElementId(uuid)
+    @PutMapping("/{elementId}")
+    public ResponseEntity<TipoTitulacion> updateTipoTitulacion(@PathVariable String elementId, @RequestBody TipoTitulacion tipoTitulacionDetails) {
+        return tipoTitulacionRepository.findByElementId(elementId)
                 .map(tipoTitulacion -> {
                     tipoTitulacion.setTipo(tipoTitulacionDetails.getTipo());
                     TipoTitulacion updatedTipoTitulacion = tipoTitulacionRepository.save(tipoTitulacion);
@@ -41,9 +41,9 @@ public class TipoTitulacionController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{uuid}")
-    public ResponseEntity<Void> deleteTipoTitulacion(@PathVariable String uuid) {
-        return tipoTitulacionRepository.findByElementId(uuid)
+    @DeleteMapping("/{elementId}")
+    public ResponseEntity<Void> deleteTipoTitulacion(@PathVariable String elementId) {
+        return tipoTitulacionRepository.findByElementId(elementId)
                 .map(tipoTitulacion -> {
                     tipoTitulacionRepository.delete(tipoTitulacion);
                     return ResponseEntity.ok().<Void>build();

@@ -11,7 +11,7 @@ public class Puesto {
 
     @Id
     @GeneratedValue
-    private String id;
+    private String elementId;
 
     @Relationship(type = "HAS_TIPO", direction = Relationship.Direction.OUTGOING)
     private TipoPuesto tipo;
@@ -28,12 +28,12 @@ public class Puesto {
     }
 
     // Getters and setters
-    public String getId() {
-        return id;
+    public String getElementId() {
+        return elementId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setElementId(String elementId) {
+        this.elementId = elementId;
     }
 
     public TipoPuesto getTipo() {
@@ -64,7 +64,7 @@ public class Puesto {
     @Override
     public String toString() {
         return "Puesto{" +
-                "id=" + id +
+                "elementId=" + elementId +
                 ", tipo=" + tipo +
                 ", desc='" + desc + '\'' +
                 ", salario=" + salario +
@@ -78,11 +78,11 @@ public class Puesto {
 
         Puesto puesto = (Puesto) o;
 
-        return id != null ? id.equals(puesto.id) : puesto.id == null;
+        return elementId != null ? elementId.equals(puesto.elementId) : puesto.elementId == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return elementId != null ? elementId.hashCode() : 0;
     }
 }

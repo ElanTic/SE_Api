@@ -21,9 +21,9 @@ public class PuestoController {
         return puestoRepository.findAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Puesto> getPuestoById(@PathVariable String id) {
-        return puestoRepository.findById(id)
+    @GetMapping("/{elementId}")
+    public ResponseEntity<Puesto> getPuestoById(@PathVariable String elementId) {
+        return puestoRepository.findByElementId(elementId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -41,9 +41,9 @@ public class PuestoController {
         return ResponseEntity.ok(puestoRepository.save(puesto));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Puesto> updatePuesto(@PathVariable String id, @RequestBody Puesto puestoDetails) {
-        return puestoRepository.findById(id)
+    @PutMapping("/{elementId}")
+    public ResponseEntity<Puesto> updatePuesto(@PathVariable String elementId, @RequestBody Puesto puestoDetails) {
+        return puestoRepository.findByElementId(elementId)
                 .map(puesto -> {
                     puesto.setTipo(puestoDetails.getTipo());
                     puesto.setDesc(puestoDetails.getDesc());
@@ -54,9 +54,9 @@ public class PuestoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePuesto(@PathVariable String id) {
-        return puestoRepository.findById(id)
+    @DeleteMapping("/{elementId}")
+    public ResponseEntity<Void> deletePuesto(@PathVariable String elementId) {
+        return puestoRepository.findByElementId(elementId)
                 .map(puesto -> {
                     puestoRepository.delete(puesto);
                     return ResponseEntity.ok().<Void>build();

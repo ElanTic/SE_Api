@@ -25,8 +25,8 @@ public class TipoPuesto {
         return elementId;
     }
 
-    public void setElementId(String id) {
-        this.elementId = id;
+    public void setElementId(String elementId) {
+        this.elementId = elementId;
     }
 
     public String getNombre() {
@@ -40,7 +40,7 @@ public class TipoPuesto {
     @Override
     public String toString() {
         return "TipoPuesto{" +
-                "id=" + elementId +
+                "elementId=" + elementId +
                 ", nombre='" + nombre + '\'' +
                 '}';
     }

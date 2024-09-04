@@ -11,7 +11,7 @@ public class Empresa {
 
     @Id
     @GeneratedValue
-    private String id;
+    private String elementId;
 
     private String nombre;
     private String rfc;
@@ -38,8 +38,8 @@ public class Empresa {
     }
 
     // Getters and setters
-    public String getId() {
-        return id;
+    public String getElementId() {
+        return elementId;
     }
 
     public String getNombre() {
@@ -110,7 +110,7 @@ public class Empresa {
     @Override
     public String toString() {
         return "Empresa{" +
-                "id=" + id +
+                "elementId=" + elementId +
                 ", nombre='" + nombre + '\'' +
                 ", rfc='" + rfc + '\'' +
                 ", direccion='" + direccion + '\'' +
@@ -129,11 +129,11 @@ public class Empresa {
 
         Empresa empresa = (Empresa) o;
 
-        return id != null ? id.equals(empresa.id) : empresa.id == null;
+        return elementId != null ? elementId.equals(empresa.elementId) : empresa.elementId == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return elementId != null ? elementId.hashCode() : 0;
     }
 }

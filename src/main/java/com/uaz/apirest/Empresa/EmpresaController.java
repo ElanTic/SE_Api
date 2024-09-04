@@ -18,9 +18,9 @@ public class EmpresaController {
         return empresaRepository.findAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Empresa> getEmpresaById(@PathVariable String id) {
-        return empresaRepository.findById(id)
+    @GetMapping("/{elementId}")
+    public ResponseEntity<Empresa> getEmpresaById(@PathVariable String elementId) {
+        return empresaRepository.findByElementId(elementId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -37,9 +37,9 @@ public class EmpresaController {
         return empresaRepository.save(empresa);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Empresa> updateEmpresa(@PathVariable String id, @RequestBody Empresa empresaDetails) {
-        return empresaRepository.findById(id)
+    @PutMapping("/{elementId}")
+    public ResponseEntity<Empresa> updateEmpresa(@PathVariable String elementId, @RequestBody Empresa empresaDetails) {
+        return empresaRepository.findByElementId(elementId)
                 .map(empresa -> {
                     empresa.setNombre(empresaDetails.getNombre());
                     empresa.setRfc(empresaDetails.getRfc());
@@ -55,9 +55,9 @@ public class EmpresaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEmpresa(@PathVariable String id) {
-        return empresaRepository.findById(id)
+    @DeleteMapping("/{elementId}")
+    public ResponseEntity<Void> deleteEmpresa(@PathVariable String elementId) {
+        return empresaRepository.findByElementId(elementId)
                 .map(empresa -> {
                     empresaRepository.delete(empresa);
                     return ResponseEntity.ok().<Void>build();
