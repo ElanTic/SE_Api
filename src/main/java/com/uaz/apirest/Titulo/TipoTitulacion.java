@@ -9,25 +9,23 @@ public class TipoTitulacion {
 
     @Id
     @GeneratedValue
-    private Long id; // Changed to Long with auto-generated ID
+    private Long elementId; // Changed to Long with auto-generated ID
     
     private String tipo;
 
-    // Default constructor
     public TipoTitulacion() {}
 
-    // Parameterized constructor
     public TipoTitulacion(String tipo) {
         this.tipo = tipo;
     }
 
     // Getters and setters
-    public Long getId() {
-        return id;
+    public Long getElementId() {
+        return elementId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setElementId(Long id) {
+        this.elementId = id;
     }
 
     public String getTipo() {
@@ -38,16 +36,6 @@ public class TipoTitulacion {
         this.tipo = tipo;
     }
 
-    // Optional: toString method for debugging
-    @Override
-    public String toString() {
-        return "TipoTitulacion{" +
-                "id=" + id +
-                ", tipo='" + tipo + '\'' +
-                '}';
-    }
-
-    // Optional: equals and hashCode methods for proper comparison
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,11 +43,11 @@ public class TipoTitulacion {
 
         TipoTitulacion that = (TipoTitulacion) o;
 
-        return id != null ? id.equals(that.id) : that.id == null;
+        return elementId != null ? elementId.equals(that.elementId) : that.elementId == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return elementId != null ? elementId.hashCode() : 0;
     }
 }

@@ -5,9 +5,8 @@ import org.springframework.data.neo4j.repository.query.Query;
 
 import java.util.Optional;
 
-public interface TipoPuestoRepository extends Neo4jRepository<TipoPuesto, String> {
-    @Query("MATCH (tipoPuesto:TipoPuesto) WHERE elementId(tipoPuesto) = $id RETURN tipoPuesto")
-    Optional<TipoPuesto> findByElementId(String id);
+public interface TipoPuestoRepository extends Neo4jRepository<TipoPuesto, Long> {
+    Optional<TipoPuesto> findByElementId(Long elementId);
     
-    Optional<TipoPuesto> findByNombre(String nombre);
+    //Optional<TipoPuesto> findByNombre(String nombre);
 }

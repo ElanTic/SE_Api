@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/tiposPuesto")
+@RequestMapping("/api/tipos-puesto")
 public class TipoPuestoController {
 
     @Autowired
@@ -19,18 +19,21 @@ public class TipoPuestoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TipoPuesto> getTipoPuestoById(@PathVariable String id) {
+    public ResponseEntity<TipoPuesto> getTipoPuestoById(@PathVariable Long id) {
         return tipoPuestoRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<TipoPuesto> getTipoPuestoByNombre(@RequestParam String nombre) {
+    /*
+     * 
+     @GetMapping("/search")
+     public ResponseEntity<TipoPuesto> getTipoPuestoByNombre(@RequestParam String nombre) {
         return tipoPuestoRepository.findByNombre(nombre)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        .map(ResponseEntity::ok)
+        .orElse(ResponseEntity.notFound().build());
     }
+    */
 
     @PostMapping
     public TipoPuesto createTipoPuesto(@RequestBody TipoPuesto tipoPuesto) {
@@ -38,7 +41,7 @@ public class TipoPuestoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TipoPuesto> updateTipoPuesto(@PathVariable String id, @RequestBody TipoPuesto tipoPuestoDetails) {
+    public ResponseEntity<TipoPuesto> updateTipoPuesto(@PathVariable Long id, @RequestBody TipoPuesto tipoPuestoDetails) {
         return tipoPuestoRepository.findById(id)
                 .map(tipoPuesto -> {
                     tipoPuesto.setNombre(tipoPuestoDetails.getNombre());
@@ -49,7 +52,7 @@ public class TipoPuestoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTipoPuesto(@PathVariable String id) {
+    public ResponseEntity<Void> deleteTipoPuesto(@PathVariable Long id) {
         return tipoPuestoRepository.findById(id)
                 .map(tipoPuesto -> {
                     tipoPuestoRepository.delete(tipoPuesto);

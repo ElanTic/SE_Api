@@ -1,0 +1,2 @@
+sudo docker compose rm -vsf
+sudo docker rmi se_api-spring-boot-api
