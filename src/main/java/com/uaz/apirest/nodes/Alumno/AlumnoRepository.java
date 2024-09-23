@@ -1,4 +1,4 @@
-package com.uaz.apirest.Alumno;
+package com.uaz.apirest.nodes.Alumno;
 
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import java.util.Optional;

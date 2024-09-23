@@ -1,4 +1,4 @@
-package com.uaz.apirest.Empresa;
+package com.uaz.apirest.nodes.Empresa;
 
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;

@@ -1,4 +1,4 @@
-package com.uaz.apirest.Titulo;
+package com.uaz.apirest.nodes.Titulo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

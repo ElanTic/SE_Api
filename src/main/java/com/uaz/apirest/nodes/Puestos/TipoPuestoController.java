@@ -1,4 +1,4 @@
-package com.uaz.apirest.Puestos;
+package com.uaz.apirest.nodes.Puestos;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

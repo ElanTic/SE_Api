@@ -1,4 +1,4 @@
-package com.uaz.apirest.Titulo;
+package com.uaz.apirest.nodes.Titulo;
 
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;

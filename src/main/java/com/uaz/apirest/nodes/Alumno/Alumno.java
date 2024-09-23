@@ -1,8 +1,11 @@
-package com.uaz.apirest.Alumno;
+package com.uaz.apirest.nodes.Alumno;
 
 import java.time.LocalDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
+
+import com.uaz.apirest.nodes.Titulo.Titulo;
 
 @Node
 public class Alumno {
@@ -13,6 +16,9 @@ public class Alumno {
     private String apellido2;
     private LocalDate fechaIngreso;
     private LocalDate fechaEgreso;
+    @Relationship(type = "HAS_TITULO", direction = Relationship.Direction.INCOMING)
+    private Titulo titulo; 
+    
 
     // Default constructor
     private Alumno() {};
@@ -21,14 +27,20 @@ public class Alumno {
         this.matricula = matricula;
     }
 
-    public Alumno(int matricula, String nombres, String apellido1, String apellido2, LocalDate fechaIngreso, LocalDate fechaEgreso) {
+    
+
+    public Alumno(int matricula, String nombres, String apellido1, String apellido2, LocalDate fechaIngreso,
+            LocalDate fechaEgreso, Titulo titulo) {
         this.matricula = matricula;
         this.nombres = nombres;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
+        this.titulo = titulo;
     }
+
+    
 
     public int getMatricula() {
         return matricula;
@@ -103,5 +115,13 @@ public class Alumno {
     @Override
     public int hashCode() {
         return matricula;
+    }
+
+    public Titulo getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(Titulo titulo) {
+        this.titulo = titulo;
     }
 }

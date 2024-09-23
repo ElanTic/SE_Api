@@ -1,4 +1,4 @@
-package com.uaz.apirest.Puestos;
+package com.uaz.apirest.nodes.Puestos;
 
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;

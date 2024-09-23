@@ -1,4 +1,4 @@
-package com.uaz.apirest.Titulo;
+package com.uaz.apirest.nodes.Titulo;
 
 import java.time.LocalDate;
 
@@ -7,7 +7,7 @@ import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
-import com.uaz.apirest.Alumno.Alumno;
+import com.uaz.apirest.nodes.Alumno.Alumno;
 
 @Node
 public class Titulo {
@@ -16,9 +16,6 @@ public class Titulo {
     @GeneratedValue
     private Long id;
     
-    @Relationship(type = "HAS_TITULO", direction = Relationship.Direction.INCOMING)
-    private Alumno alumno; 
-    
     // Relationship TipoTitulacion
     @Relationship(type = "HAS_TIPO", direction = Relationship.Direction.INCOMING)
     private TipoTitulacion tipoTitulacion;
@@ -26,15 +23,18 @@ public class Titulo {
     private LocalDate fechaTitulacion;
     private int cedula;
 
+    //@Relationship(type = "HAS_TITULO", direction = Relationship.Direction.OUTGOING)
+    //private Alumno alumno; 
+    
+
     private Titulo() {};
 
-    public Titulo(Alumno alumno, LocalDate fechaTitulacion) {
-        this.alumno = alumno;
+    public Titulo(LocalDate fechaTitulacion) {
         this.fechaTitulacion = fechaTitulacion;
     }
 
-    public Titulo(Alumno alumno, TipoTitulacion tipoTitulacion, LocalDate fechaTitulacion, int cedula) {
-        this.alumno = alumno;
+    public Titulo(TipoTitulacion tipoTitulacion, LocalDate fechaTitulacion, int cedula) {
+        //this.alumno = alumno;
         this.tipoTitulacion = tipoTitulacion;
         this.fechaTitulacion = fechaTitulacion;
         this.cedula = cedula;
@@ -47,14 +47,6 @@ public class Titulo {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Alumno getAlumno() {
-        return alumno;
-    }
-
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
     }
 
     public TipoTitulacion getTipoTitulacion() {
@@ -85,7 +77,7 @@ public class Titulo {
     public String toString() {
         return "Titulo{" +
                 "id=" + id +
-                ", alumno=" + alumno +
+//                ", alumno=" + alumno +
                 ", tipoTitulacion=" + tipoTitulacion +
                 ", fechaTitulacion=" + fechaTitulacion +
                 ", cedula=" + cedula +

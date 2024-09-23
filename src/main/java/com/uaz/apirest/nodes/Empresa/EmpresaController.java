@@ -1,4 +1,4 @@
-package com.uaz.apirest.Empresa;
+package com.uaz.apirest.nodes.Empresa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

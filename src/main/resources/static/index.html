@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMX Spring Boot Layout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Layout styling */
+        body {
+            display: flex;
+            flex-direction: column; 
+            min-height: 100vh; 
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .left-panel {
+            width: 200px;
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        .left-panel button {
+            background-color: #34495e;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        /* Main content */
+        .main-content {
+            flex-grow: 1; /* Allow this to take up as much vertical space as possible */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: auto; /* Allow content to scroll if necessary */
+        }
+
+        /* Scrollable grid */
+        .scrollable-grid {
+            flex-grow: 1; /* Allow the grid to expand and take available space */
+            overflow-y: auto;
+            border: 1px solid #ccc;
+        }
+
+        .grid-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            align-items: center;
+        }
+
+        .grid-row:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Footer styling */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-top: 1px solid #ccc;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer button {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div style="display: flex; flex-grow: 1;"> 
+        <!-- Left panel -->
+        <div class="left-panel">
+            <button hx-get="/action1" hx-swap="outerHTML">Button 1</button>
+            <button hx-get="/action2" hx-swap="outerHTML">Button 2</button>
+            <button hx-get="/action3" hx-swap="outerHTML">Button 3</button>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Scrollable grid
+            <div class="scrollable-grid">
+            -->
+            <div class="scrollable-grid" id="alumnosGrid" hx-get="/api/alumnos/fragments" hx-trigger="load" hx-target="#AlumonsGrid" hx-swap="innerHTML">
+            </div>
+            
+            <!-- Footer with buttons -->
+            <div class="footer">
+                <button hx-get="/request-file"><i class="fas fa-file"></i> Request File</button>
+                <button hx-get="/request-db-file"><i class="fas fa-database"></i> Request DB File</button>
+                <button hx-get="/user-form"><i class="fas fa-user"></i> User Form</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
