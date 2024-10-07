@@ -3,46 +3,34 @@ package com.uaz.apirest;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.SparkSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 
+
+	
 @Configuration
 public class SparkConfig {
-    @Autowired
-    private Environment env;
-
-    @Value("${app.name:jigsaw}")
+ 
+    @Value("${spark.app.name}")
     private String appName;
-
-    @Value("${spark.home}")
-    private String sparkHome;
-
-    @Value("${master.uri:local}")
+    @Value("${spark.master}")
     private String masterUri;
-    
+ 
     @Bean
-    public SparkConf sparkConf() {
-        SparkConf sparkConf = new SparkConf()
-                .setAppName(appName)
-                .setSparkHome(sparkHome)
-                .setMaster(masterUri)
-                ;
-         
-        return sparkConf;
+    public SparkConf conf() {
+        return new SparkConf().setAppName(appName).setMaster(masterUri);
     }
 
     @Bean
-    public JavaSparkContext javaSparkContext() {
-        return new JavaSparkContext(sparkConf());
+    public JavaSparkContext sc() {
+        return new JavaSparkContext(conf());
     }
-   
+    
     @Bean
     public SparkSession sparkSession() {
         return SparkSession.builder()
-                .sparkContext(javaSparkContext().sc())
+                .sparkContext(sc().sc())
                 .appName("apirest")
                 .getOrCreate();
     }
