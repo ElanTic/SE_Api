@@ -33,7 +33,8 @@ public class AlumnoController {
 
     @GetMapping("/fragments")
     public String getAlumnos(Model model) {
-        model.addAllAttributes(getAllAlumnos());
+        model.addAttribute("alumnos", getAllAlumnos());
+        
         return "fragments/alumnos";
     }
     
