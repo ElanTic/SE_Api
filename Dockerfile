@@ -7,6 +7,7 @@ RUN mvn clean package
 
 FROM amazoncorretto:17
 
+ENV JDK_JAVA_OPTIONS='--add-opens=java.base/sun.nio.ch=ALL-UNNAMED'
 COPY --from=build /target/apirest-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
