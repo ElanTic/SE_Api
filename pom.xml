@@ -95,6 +95,12 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			 <dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>4.0.1</version> <!-- or another compatible version -->
+				<scope>provided</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
