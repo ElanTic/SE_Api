@@ -10,4 +10,5 @@ FROM amazoncorretto:17
 COPY --from=build /target/apirest-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
-ENTRYPOINT ["java", "--add-opens", "java.base/sun.nio.ch=ALL-UNNAMED", "-jar", "/app.jar"]
+
+ENTRYPOINT ["java","-jar","/app.jar"]
