@@ -15,13 +15,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.uaz.apirest.gestor.loaders.AlumnoLoader;
-import com.uaz.apirest.nodes.Alumno.Alumno;
+import com.uaz.apirest.nodes.Alumno.*;
 
 @Service
 public class CSVTransformer {
     
+    
     @Autowired
-    AlumnoLoader loader;
+    private AlumnoRepository alumnoRepository;
 
     public void runEtlPipeline(MultipartFile file) throws Exception {
         File tempFile = File.createTempFile("upload", ".csv");
@@ -54,7 +55,12 @@ public class CSVTransformer {
                 alumnos.add(alumno);
             }
 
-            loader.saveNodes(alumnos);
+            saveNodes(alumnos);
+        }
+    }
+    public void saveNodes(List<Alumno> alumnos) {
+        for (Alumno alumno : alumnos) {
+            alumnoRepository.save(alumno);
         }
     }
 }

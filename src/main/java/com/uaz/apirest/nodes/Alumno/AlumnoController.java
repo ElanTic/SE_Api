@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import com.uaz.apirest.nodes.Titulo.Titulo;
 import com.uaz.apirest.nodes.Titulo.TituloRepository;
+import com.uaz.apirest.gestor.transformers.CSVTransformer;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -18,6 +21,9 @@ public class AlumnoController {
     @Autowired
     private AlumnoRepository alumnoRepository;
     private TituloRepository tituloRepository;
+
+    @Autowired
+    CSVTransformer transformer;
 
     @GetMapping
     public List<Alumno> getAllAlumnos() {
@@ -36,6 +42,17 @@ public class AlumnoController {
         model.addAttribute("alumnos", getAllAlumnos());
         
         return "fragments/alumnos";
+    }
+
+    @PostMapping("/csv")
+    public String uploadFile(@RequestParam("file") MultipartFile file) {
+        try {
+            transformer.runEtlPipeline(file);
+            return "File uploaded and processed successfully!";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Failed to upload and process the file.";
+        }
     }
     
 

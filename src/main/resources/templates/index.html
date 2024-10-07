@@ -128,7 +128,7 @@
             
             <!-- Footer with buttons -->
             <div class="footer">
-                <form id="uploadForm" action="/upload-file" method="POST" enctype="multipart/form-data">
+                <form id="uploadForm" action="/api/alumnos/csv" method="POST" enctype="multipart/form-data">
                     <input type="file" name="file" style="display:none;" id="fileInput">
                     <button type="button" onclick="document.getElementById('fileInput').click();">
                         <i class="fas fa-file"></i> Request File

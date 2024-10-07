@@ -27,16 +27,4 @@ public class MyController {
     public String partialContent(Model model) {
         return "fragments :: contentFragment";
     }
-
-    @PostMapping("/csv")
-    public String uploadFile(@RequestParam("file") MultipartFile file) {
-        try {
-            // Convert MultipartFile to a temporary file or InputStream for Spark processing
-            transformer.runEtlPipeline(file);
-            return "File uploaded and processed successfully!";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Failed to upload and process the file.";
-        }
-    }
 }

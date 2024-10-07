@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.uaz.apirest.nodes.Alumno.Alumno;
 import com.uaz.apirest.nodes.Alumno.AlumnoRepository;
 
-
 public class AlumnoLoader {
     @Autowired
     private AlumnoRepository alumnoRepository;
