@@ -1,4 +1,4 @@
-package com.uaz.apirest.gestor;
+package com.uaz.apirest;
 
 import org.apache.spark.sql.SparkSession;
 import org.springframework.context.annotation.Bean;
