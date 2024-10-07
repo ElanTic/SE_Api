@@ -27,13 +27,13 @@
 
 		<dependency>
 			<groupId>org.apache.spark</groupId>
-			<artifactId>spark-core_2.13</artifactId>
+			<artifactId>spark-core_2.12</artifactId>
 			<version>3.5.0</version>
 		</dependency>
 
 		  <dependency>
 			<groupId>org.apache.spark</groupId>
-			<artifactId>spark-sql_2.13</artifactId>
+			<artifactId>spark-sql_2.12</artifactId>
 			<version>3.5.0</version>
 		</dependency>
 
@@ -98,7 +98,7 @@
 			 <dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
-				<version>4.0.1</version> <!-- or another compatible version -->
+				<version>4.0.1</version>
 				<scope>provided</scope>
 			</dependency>
 		</dependencies>
