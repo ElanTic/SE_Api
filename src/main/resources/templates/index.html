@@ -126,9 +126,17 @@
                     <!-- Records will be loaded here by JavaScript -->
                 </div>
             
-            <!-- Footer with buttons -->
-            <div class="footer">
-                <button hx-get="/request-file"><i class="fas fa-file"></i> Request File</button>
+                <div class="footer">
+                    <!-- 
+                    <button hx-get="/request-file"><i class="fas fa-file"></i> Request File</button>
+                    -->
+                <form id="uploadForm" action="/upload-file" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="file" style="display:none;" id="fileInput">
+                    <button type="button" onclick="document.getElementById('fileInput').click();">
+                        <i class="fas fa-file"></i> Request File
+                    </button>
+                    <button type="submit"><i class="fas fa-upload"></i> Upload</button>
+                </form>
                 <button hx-get="/request-db-file"><i class="fas fa-database"></i> Request DB File</button>
                 <button hx-get="/user-form"><i class="fas fa-user"></i> User Form</button>
             </div>
