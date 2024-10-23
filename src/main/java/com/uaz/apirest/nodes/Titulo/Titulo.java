@@ -6,15 +6,14 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
-
-import com.uaz.apirest.nodes.Alumno.Alumno;
+import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
 
 @Node
 public class Titulo {
 
     @Id 
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(generatorClass = UUIDStringGenerator.class)
+    private String id;
     
     // Relationship TipoTitulacion
     @Relationship(type = "HAS_TIPO", direction = Relationship.Direction.INCOMING)
@@ -41,11 +40,11 @@ public class Titulo {
     }
 
     // Getters and setters
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -60,14 +60,14 @@ public class TituloController {
 
 class TituloRequest {
     private String matricula;
-    private Long tipoTitulacionId;
+    private String tipoTitulacionId;
     private LocalDate fechaTitulacion;
     private int cedula;
 
     public String getMatricula() {
         return matricula;
     }
-    public Long getTipoTitulacionId() {
+    public String getTipoTitulacionId() {
         return tipoTitulacionId;
     }
     public LocalDate getFechaTitulacion() {

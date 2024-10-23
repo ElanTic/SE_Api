@@ -15,8 +15,6 @@ services:
     container_name: spring-boot-api
     ports:
       - "8080:8080"
-    volumes:
-      - ./src:/app/src
     depends_on:
       - neo4j
     environment:
