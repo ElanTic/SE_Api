@@ -1,16 +1,17 @@
-package com.uaz.apirest.Empresa;
+package com.uaz.apirest.nodes.Empresa;
 
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
 
 
 @Node
 public class Empresa {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(generatorClass = UUIDStringGenerator.class)
+    private String id;
 
     private String nombre;
     private String rfc;
@@ -37,11 +38,11 @@ public class Empresa {
     }
 
     // Getters and setters
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

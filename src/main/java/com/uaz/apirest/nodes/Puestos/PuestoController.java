@@ -1,4 +1,4 @@
-package com.uaz.apirest.Puestos;
+package com.uaz.apirest.nodes.Puestos;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class PuestoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Puesto> getPuestoById(@PathVariable Long id) {
+    public ResponseEntity<Puesto> getPuestoById(@PathVariable String id) {
         return puestoRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -42,7 +42,7 @@ public class PuestoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Puesto> updatePuesto(@PathVariable Long id, @RequestBody Puesto puestoDetails) {
+    public ResponseEntity<Puesto> updatePuesto(@PathVariable String id, @RequestBody Puesto puestoDetails) {
         return puestoRepository.findById(id)
                 .map(puesto -> {
                     puesto.setTipo(puestoDetails.getTipo());
@@ -55,7 +55,7 @@ public class PuestoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePuesto(@PathVariable Long id) {
+    public ResponseEntity<Void> deletePuesto(@PathVariable String  id) {
         return puestoRepository.findById(id)
                 .map(puesto -> {
                     puestoRepository.delete(puesto);

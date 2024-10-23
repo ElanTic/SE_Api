@@ -1,4 +1,4 @@
-package com.uaz.apirest.Empresa;
+package com.uaz.apirest.nodes.Empresa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class EmpresaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Empresa> getEmpresaById(@PathVariable Long id) {
+    public ResponseEntity<Empresa> getEmpresaById(@PathVariable String  id) {
         return empresaRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -38,7 +38,7 @@ public class EmpresaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Empresa> updateEmpresa(@PathVariable Long id, @RequestBody Empresa empresaDetails) {
+    public ResponseEntity<Empresa> updateEmpresa(@PathVariable String id, @RequestBody Empresa empresaDetails) {
         return empresaRepository.findById(id)
                 .map(empresa -> {
                     empresa.setNombre(empresaDetails.getNombre());
@@ -56,7 +56,7 @@ public class EmpresaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEmpresa(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteEmpresa(@PathVariable String id) {
         return empresaRepository.findById(id)
                 .map(empresa -> {
                     empresaRepository.delete(empresa);

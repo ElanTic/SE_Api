@@ -1,4 +1,4 @@
-package com.uaz.apirest.Titulo;
+package com.uaz.apirest.nodes.Titulo;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.uaz.apirest.Alumno.Alumno;
-import com.uaz.apirest.Alumno.AlumnoRepository;
+import com.uaz.apirest.nodes.Alumno.Alumno;
+import com.uaz.apirest.nodes.Alumno.AlumnoRepository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -46,23 +46,28 @@ public class TituloController {
 
         TipoTitulacion tipoTitulacion = tipoTitulacionOpt.get();
 
-        Titulo titulo = new Titulo(alumno, tipoTitulacion, tituloRequest.getFechaTitulacion(), tituloRequest.getCedula());
+        // Create and save the new Titulo
+        Titulo titulo = new Titulo(tipoTitulacion, tituloRequest.getFechaTitulacion(), tituloRequest.getCedula());
         tituloRepository.save(titulo);
 
+        // Set the Titulo on the Alumno and save the Alumno to update the relationship
+        alumno.setTitulo(titulo);
+        alumnoRepository.save(alumno); // Ensure the relationship is persisted in the database
+
         return ResponseEntity.status(HttpStatus.CREATED).body(titulo);
-}
+    }
 }
 
 class TituloRequest {
-    private int matricula;
-    private Long tipoTitulacionId;
+    private String matricula;
+    private String tipoTitulacionId;
     private LocalDate fechaTitulacion;
     private int cedula;
 
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
-    public Long getTipoTitulacionId() {
+    public String getTipoTitulacionId() {
         return tipoTitulacionId;
     }
     public LocalDate getFechaTitulacion() {

@@ -1,21 +1,22 @@
-package com.uaz.apirest.Puestos;
+package com.uaz.apirest.nodes.Puestos;
 
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
 
 @Node
 public class TipoPuesto {
 
     @Id
-    @GeneratedValue
-    private Long elementId;
+    @GeneratedValue(generatorClass = UUIDStringGenerator.class)
+    private String elementId;
 
-    public Long getElementId() {
+    public String getElementId() {
         return this.elementId;
     }
 
-    public void setElementId(Long elementId) {
+    public void setElementId(String elementId) {
         this.elementId = elementId;
     }
     

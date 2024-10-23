@@ -1,15 +1,16 @@
-package com.uaz.apirest.Titulo;
+package com.uaz.apirest.nodes.Titulo;
 
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
 
 @Node
 public class TipoTitulacion {
 
     @Id
-    @GeneratedValue
-    private Long elementId; // Changed to Long with auto-generated ID
+    @GeneratedValue(generatorClass = UUIDStringGenerator.class)
+    private String elementId;
     
     private String tipo;
 
@@ -20,11 +21,11 @@ public class TipoTitulacion {
     }
 
     // Getters and setters
-    public Long getElementId() {
+    public String getElementId() {
         return elementId;
     }
 
-    public void setElementId(Long id) {
+    public void setElementId(String id) {
         this.elementId = id;
     }
 
