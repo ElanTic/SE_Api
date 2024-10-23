@@ -1,7 +1,7 @@
 package com.uaz.apirest.nodes.Alumno;
 
 import java.time.LocalDate;
-import org.springframework.data.annotation.Id;
+import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
@@ -10,7 +10,7 @@ import com.uaz.apirest.nodes.Titulo.Titulo;
 @Node
 public class Alumno {
     
-    @Id private int matricula;
+    @Id private String matricula;
     private String nombres;
     private String apellido1;
     private String apellido2;
@@ -23,14 +23,14 @@ public class Alumno {
     // Default constructor
     private Alumno() {};
 
-    public Alumno(int matricula) {
+    public Alumno(String matricula) {
         this.matricula = matricula;
     }
 
     
 
-    public Alumno(int matricula, String nombres, String apellido1, String apellido2, LocalDate fechaIngreso,
-            LocalDate fechaEgreso, Titulo titulo) {
+    public Alumno(String matricula, String nombres, String apellido1, String apellido2, LocalDate fechaIngreso,
+                  LocalDate fechaEgreso, Titulo titulo) {
         this.matricula = matricula;
         this.nombres = nombres;
         this.apellido1 = apellido1;
@@ -42,11 +42,11 @@ public class Alumno {
 
     
 
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
@@ -110,11 +110,6 @@ public class Alumno {
         Alumno alumno = (Alumno) o;
 
         return matricula == alumno.matricula;
-    }
-
-    @Override
-    public int hashCode() {
-        return matricula;
     }
 
     public Titulo getTitulo() {

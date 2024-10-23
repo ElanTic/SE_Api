@@ -20,7 +20,6 @@ import com.uaz.apirest.nodes.Alumno.*;
 @Service
 public class CSVTransformer {
     
-    
     @Autowired
     private AlumnoRepository alumnoRepository;
 
@@ -44,7 +43,7 @@ public class CSVTransformer {
 
             while ((nextLine = csvReader.readNext()) != null) {
                 Alumno alumno = new Alumno(
-                    Integer.parseInt(nextLine[0]),  // matricula
+                    nextLine[0],  // matricula
                     nextLine[1],  // nombres
                     nextLine[2],  // apellido1
                     nextLine[3],  // apellido2

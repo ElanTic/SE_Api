@@ -22,8 +22,7 @@ public class AlumnoController {
     private AlumnoRepository alumnoRepository;
     private TituloRepository tituloRepository;
 
-    @Autowired
-    CSVTransformer transformer;
+    CSVTransformer transformer = new CSVTransformer();
 
     @GetMapping
     public List<Alumno> getAllAlumnos() {
@@ -31,7 +30,7 @@ public class AlumnoController {
     }
 
     @GetMapping("/{matricula}")
-    public ResponseEntity<Alumno> getAlumnoByMatricula(@PathVariable int matricula) {
+    public ResponseEntity<Alumno> getAlumnoByMatricula(@PathVariable String matricula) {
         return alumnoRepository.findByMatricula(matricula)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -78,7 +77,7 @@ public class AlumnoController {
             }
             */
     @PutMapping("/{id}")
-    public ResponseEntity<Alumno> updateAlumno(@PathVariable int id, @RequestBody Alumno alumnoDetails) {
+    public ResponseEntity<Alumno> updateAlumno(@PathVariable String id, @RequestBody Alumno alumnoDetails) {
         return alumnoRepository.findByMatricula(id)
             .map(alumno -> {
                 // Update Alumno details
@@ -107,7 +106,7 @@ public class AlumnoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAlumno(@PathVariable int id) {
+    public ResponseEntity<Void> deleteAlumno(@PathVariable String id) {
         return alumnoRepository.findByMatricula(id)
                 .map(alumno -> {
                     // Optionally handle deletion of the associated Titulo
